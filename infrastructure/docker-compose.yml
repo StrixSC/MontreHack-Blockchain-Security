@@ -1,0 +1,67 @@
+version: "3.3"
+services:
+  geth:
+    build: .
+    container_name: ethereum
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    restart: always
+
+  faucet:
+    image: chainflag/eth-faucet:1.0.0
+    container_name: ethfaucet
+    environment:
+      - WEB3_PROVIDER=http://geth:8545
+      - KEYSTORE=/app/keystore
+    ports:
+      - "8080:8080"
+    links:
+      - geth
+    volumes:
+      - ./config/keystore:/app/keystore
+      - ./config/password.txt:/app/password.txt
+    command: -interval 1
+    depends_on:
+      - geth
+    restart: always
+    
+  NukeAuction:
+    image: chainflag/eth-challenge-base
+    ports:
+      - "20000:20000"
+    env_file:
+      - .env
+    volumes:
+      - ./NukeAuction/contracts/:/home/ctf/contracts
+      - ./NukeAuction/NukeAuction.yml:/home/ctf/challenge.yml
+
+  onChainLotterySecuredx20000:
+    image: chainflag/eth-challenge-base
+    ports:
+      - "20001:20001"
+    env_file:
+      - .env
+    volumes:
+      - ./onChainLotterySecuredx20000/contracts/:/home/ctf/contracts
+      - ./onChainLotterySecuredx20000/onChainLotterySecuredx20000.yml:/home/ctf/challenge.yml
+
+  Racers:
+    image: chainflag/eth-challenge-base
+    ports:
+      - "20002:20002"
+    env_file:
+      - .env
+    volumes:
+      - ./Racers/contracts/:/home/ctf/contracts
+      - ./Racers/Racers.yml:/home/ctf/challenge.yml
+
+  SDGG:
+    image: chainflag/eth-challenge-base
+    ports:
+      - "20003:20003"
+    env_file:
+      - .env
+    volumes:
+      - ./SDGG/contracts/:/home/ctf/contracts
+      - ./SDGG/SDGG.yml:/home/ctf/challenge.yml
