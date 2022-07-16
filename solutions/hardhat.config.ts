@@ -1,7 +1,8 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import { config as confenv } from "dotenv";
 import { Wallet } from "ethers";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 confenv();
 
@@ -41,7 +42,18 @@ const config: HardhatUserConfig = {
       accounts,
       url: URL || "http://localhost:8545"
     }
-  }
+  },
+  mocha: {
+    timeout: 100000000
+  },
 };
+
+task("storage", "Get a challenge's storage", async (taskArgs: any, hre: HardhatRuntimeEnvironment) => {
+  for (let i = 0; true; i++) {
+    const storage = await hre.ethers.provider.getStorageAt(taskArgs.address, i);
+    console.log(storage);
+  };
+}).addParam("address", "Contract's address")
+
 
 export default config;
