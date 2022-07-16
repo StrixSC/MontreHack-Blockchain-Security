@@ -5,7 +5,7 @@ contract NukeAuction
     uint public maxAmount = 0.1 ether;
     address public winner;
 
-    constructor() public {}
+    constructor() {}
     
     function deposit() public payable 
     {

@@ -1,4 +1,4 @@
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.13;
 
 contract SDGG {
     event GuessTriggered(uint256 _number, string _result);

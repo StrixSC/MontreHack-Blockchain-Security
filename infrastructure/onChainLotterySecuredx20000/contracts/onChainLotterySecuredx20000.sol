@@ -1,4 +1,4 @@
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.13;
 
 contract onChainLotterySecuredx20000 {
     /*
@@ -7,7 +7,7 @@ contract onChainLotterySecuredx20000 {
     bool hasWon = false;
     mapping(address => uint256) secured_HasH2GueSs;
 
-    constructor() payable {}
+    constructor() {}
 
     function getPrizePool() external view returns (uint256) {
         return address(this).balance;
