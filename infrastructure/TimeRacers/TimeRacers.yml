@@ -1,4 +1,4 @@
-contract: Racers  # Challenge contract name(class name)
+contract: TimeRacers  # Challenge contract name(class name)
 
 # The description will be displayed when players nc to the challenge
 description: |
@@ -8,7 +8,7 @@ flag: FLAG-TheDAOHackOf2016SalutesYou
 
 constructor:
   args: []
-  value: 0
+  value: 1
   #gas: 1000000          # The default value is the response value of the eth_estimateGas JSON-RPC
 
 #show_source: False      # Show source option available by default, you need to set False for a reverse contract challenge

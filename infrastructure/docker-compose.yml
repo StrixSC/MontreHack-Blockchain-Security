@@ -7,6 +7,8 @@ services:
       - ./config:/config
       - ./data:/data
     restart: always
+    ports:
+      - "7777:8545"
   faucet:
     image: chainflag/eth-faucet:1.0.0
     container_name: ethfaucet
@@ -20,7 +22,7 @@ services:
     volumes:
       - ./config/keystore:/app/keystore
       - ./config/password.txt:/app/password.txt
-    command: -interval 1
+    command: -interval 1 -chainname "Hackchain"
     depends_on:
       - geth
     restart: always
@@ -44,7 +46,7 @@ services:
     volumes:
       - ./onChainLotterySecuredx20000/contracts/:/home/ctf/contracts
       - ./onChainLotterySecuredx20000/onChainLotterySecuredx20000.yml:/home/ctf/challenge.yml
-  Racers:
+  TimeRacers:
     image: chainflag/eth-challenge-base
     ports:
       - "20002:20000"
@@ -53,8 +55,8 @@ services:
       - .env
     volumes:
       - ./Racers/contracts/:/home/ctf/contracts
-      - ./Racers/Racers.yml:/home/ctf/challenge.yml
-  SDGG:
+      - ./Racers/TimeRacers.yml:/home/ctf/challenge.yml
+  SDGG2:
     image: chainflag/eth-challenge-base
     container_name: challenge4
     ports:
