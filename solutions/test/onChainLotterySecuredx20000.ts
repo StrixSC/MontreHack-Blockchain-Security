@@ -8,7 +8,7 @@ describe("onChainLottery", function () {
     let player: string;
     let challengeFactory: ContractFactory;
     let challenge: Contract;
-    let challenge_instance_address = "0x06A56751dec4C7CA9d2B45651720304eB02bb529";
+    let challenge_instance_address = "0xFBf096554390f99fAf4940E5E85baaA662271662";
 
     before(async () => {
         [signer] = await ethers.getSigners();

@@ -10,7 +10,7 @@ describe("TimeRacers", function () {
     let challenge: Contract;
 
     // Set the challenge instance to the address returned when deploying the challenge.
-    let challenge_instance_address = "0xaf067fCB19fE5E855670677B7431195B96096110";
+    let challenge_instance_address = "0x2E10C18C5b1183B24d7D667768888e37b78e351C";
 
     before(async () => {
         [signer] = await ethers.getSigners();

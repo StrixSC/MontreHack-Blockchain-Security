@@ -7,7 +7,7 @@ describe("NukeAuction", function () {
     let player: string;
     let challengeFactory: ContractFactory;
     let challenge: Contract;
-    let challenge_instance_address = "0x6e72e864216cBC8a8A3921715F08d88fF35A5708";
+    let challenge_instance_address = "0x75eecf3068BCeA81b904986451038a9328329Adf";
 
     before(async () => {
         [signer] = await ethers.getSigners();
