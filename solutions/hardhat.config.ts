@@ -1,27 +1,21 @@
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import { config as confenv } from "dotenv";
-import { Wallet } from "ethers";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 confenv();
 
-const { MNEMONIC, URL } = process.env;
+const { PRIVATE_KEY, URL } = process.env;
 const setupAccounts = () => {
-  if (!MNEMONIC) {
+  if (!PRIVATE_KEY) {
     console.error("Missing mnemonic from environment variable...");
-    return;
-  }
-  const signer = Wallet.fromMnemonic(MNEMONIC!);
-  if (!signer) {
-    console.error("Error while creating signer...");
-    return;
+    process.exit();
   }
 
-  return signer;
+  return PRIVATE_KEY;
 }
 
-const accounts = [setupAccounts()!.privateKey];
+const accounts = [setupAccounts()];
 
 if (accounts.length === 0) {
   console.error("Account could not be found. Make sure the MNEMONIC is set in .env");
@@ -34,6 +28,7 @@ const config: HardhatUserConfig = {
       { version: "0.8.7" },
       { version: "0.8.10" },
       { version: "0.8.13" },
+      { version: "0.6.10" },
     ],
   },
   networks: {

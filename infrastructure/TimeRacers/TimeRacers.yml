@@ -8,7 +8,7 @@ flag: FLAG-TheDAOHackOf2016SalutesYou
 
 constructor:
   args: []
-  value: 1
+  value: 10000000000000000
   #gas: 1000000          # The default value is the response value of the eth_estimateGas JSON-RPC
 
 #show_source: False      # Show source option available by default, you need to set False for a reverse contract challenge

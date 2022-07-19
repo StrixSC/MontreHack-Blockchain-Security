@@ -26,9 +26,9 @@ services:
     depends_on:
       - geth
     restart: always
-  NukeAuction:
+  Transmitter:
     image: chainflag/eth-challenge-base
-    container_name: challenge1
+    container_name: transmitter
     ports:
       - "20000:20000"
     env_file:
@@ -36,11 +36,21 @@ services:
     volumes:
       - ./NukeAuction/contracts/:/home/ctf/contracts
       - ./NukeAuction/NukeAuction.yml:/home/ctf/challenge.yml
-  onChainLotterySecuredx20000:
+  NukeAuction:
     image: chainflag/eth-challenge-base
-    container_name: challenge2
+    container_name: nukeauction
     ports:
       - "20001:20000"
+    env_file:
+      - .env
+    volumes:
+      - ./NukeAuction/contracts/:/home/ctf/contracts
+      - ./NukeAuction/NukeAuction.yml:/home/ctf/challenge.yml
+  onChainLotterySecuredx20000:
+    image: chainflag/eth-challenge-base
+    container_name: onchainlottery
+    ports:
+      - "20002:20000"
     env_file:
       - .env
     volumes:
@@ -49,20 +59,20 @@ services:
   TimeRacers:
     image: chainflag/eth-challenge-base
     ports:
-      - "20002:20000"
-    container_name: challenge3
-    env_file:
-      - .env
-    volumes:
-      - ./Racers/contracts/:/home/ctf/contracts
-      - ./Racers/TimeRacers.yml:/home/ctf/challenge.yml
-  SDGG2:
-    image: chainflag/eth-challenge-base
-    container_name: challenge4
-    ports:
       - "20003:20000"
+    container_name: timeracers
     env_file:
       - .env
     volumes:
-      - ./SDGG/contracts/:/home/ctf/contracts
-      - ./SDGG/SDGG.yml:/home/ctf/challenge.yml
+      - ./TimeRacers/contracts/:/home/ctf/contracts
+      - ./TimeRacers/TimeRacers.yml:/home/ctf/challenge.yml
+  TransparentCasino:
+    image: chainflag/eth-challenge-base
+    container_name: transparentcasino
+    ports:
+      - "20004:20000"
+    env_file:
+      - .env
+    volumes:
+      - ./TransparentCasino/contracts/:/home/ctf/contracts
+      - ./TransparentCasino/TransparentCasino.yml:/home/ctf/challenge.yml

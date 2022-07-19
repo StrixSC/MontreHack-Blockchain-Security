@@ -1,0 +1,16 @@
+contract: Transmitter  # Challenge contract name(class name)
+
+# The description will be displayed when players nc to the challenge
+description: The transmitter has been seeing a lot of action recently. It's been shown to be used a lot, especially during emergency, but we should really fix the issue with the noise that occurs sometimes during transmissions.
+
+flag: FLAG-WelcomeToEthereum!
+
+constructor:
+  args: []
+  value: 0
+  #gas: 1000000          # The default value is the response value of the eth_estimateGas JSON-RPC
+
+#show_source: False      # Show source option available by default, you need to set False for a reverse contract challenge
+#solved_event: SendFlag  # The default is to use isSolved() view function as solved checker, but emitted event checker is also supported
+
+deployed_addr: Ropsten Testnet @ 0x7BB2B3F29faC32dd86b2B760ca180462b2E08e6E  # Use a pre-deployed contract for all players instead of deploying individually
