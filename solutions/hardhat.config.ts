@@ -25,6 +25,7 @@ if (accounts.length === 0) {
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
+      { version: "0.8.0" },
       { version: "0.8.7" },
       { version: "0.8.10" },
       { version: "0.8.13" },
@@ -35,7 +36,7 @@ const config: HardhatUserConfig = {
     montrehack: {
       chainId: 77777,
       accounts,
-      url: URL || "http://localhost:8545"
+      url: URL || "http://localhost:7777"
     }
   },
   mocha: {

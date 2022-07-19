@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { BigNumber, Contract, ContractFactory, providers, Signer } from "ethers";
 import { ethers } from "hardhat";
 
-// token: v4.local.MzDhV45CAVBzBTSXkhB0_pVVg3PuIljYCCa2NKpveUCIKx53hJePgxkPlES4gFRBb4Z8KJ-povQASQrlIdHrn0rSWGEZjFqUNGPp9cB3Ke2CP9TtEkOPO6kTHqH-Y-lJkOaaRnGRs2rDR0W5RhSz_R-NEv0rYqOJhp2WGxIn8r-zjg
+// token: v4.local.MzzDhV45CAVBzBTSXkhB0_pVVg3PuIljYCCa2NKpveUCIKx53hJePgxkPlES4gFRBb4Z8KJ-povQASQrlIdHrn0rSWGEZjFqUNGPp9cB3Ke2CP9TtEkOPO6kTHqH-Y-lJkOaaRnGRs2rDR0W5RhSz_R-NEv0rYqOJhp2WGxIn8r-zjg
 describe("TimeRacers", function () {
     let signer: Signer;
     let player: string;
@@ -10,7 +10,7 @@ describe("TimeRacers", function () {
     let challenge: Contract;
 
     // Set the challenge instance to the address returned when deploying the challenge.
-    let challenge_instance_address = "0x37B755bA32eA9F03423e0E6b518dA64d7b648FfD";
+    let challenge_instance_address = "0xaf067fCB19fE5E855670677B7431195B96096110";
 
     before(async () => {
         [signer] = await ethers.getSigners();

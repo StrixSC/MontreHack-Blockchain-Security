@@ -3,23 +3,24 @@
 pragma solidity ^0.8.0;
 
 contract SolidityByExample {
+    uint256 getterVar;
     event HelloEvent(address); // Events can be used to communicate with front-ends to provide realtime feedback on contract execution flow!
     event GoodbyeEvent(address);
 
     /*  
         Standard HelloWorld!
-        ~ Love to see it!
+        Dev note: ~ Love to see it!
     */
     function HelloWorld() public {  
         emit HelloEvent(msg.sender);
     }
 
-    function getExamples() public pure returns (string[8] memory) {
-        string[8] memory examples = ["typeCasting()", "ifElseIfStatement()", "forLoop()", "whileLoop()", "doWhileLoop()", "switchCaseYUL()", "HelloWorld()", "GoodByeWorld()"];
+    function getExamples() public pure returns (string[12] memory) {
+        string[12] memory examples = ["typeCasting()", "ifElseIfStatement()", "forLoop()", "whileLoop()", "doWhileLoop()", "switchCaseYUL()", "HelloWorld()", "GoodByeWorld()", "getterFunction()", "setterFunction()", "pureFunction()", "viewFunction()"];
         return examples;
     }
 
-    function typeCasting() public pure {
+    function typeCasting() public pure returns (bytes memory) {
         uint256 a = 0x12345678;
         uint128 b = uint128(a);
         uint64 c = uint64(b);
@@ -29,6 +30,7 @@ contract SolidityByExample {
         bytes32 g = bytes32(a);
         bytes16 h = bytes16(g);
         bytes8 i = bytes8(h);
+        return abi.encodePacked(f, i); // We can also call built-in methods from the ABI!
     }
 
     function ifElseIfStatement() public pure returns (bool) {
@@ -37,6 +39,24 @@ contract SolidityByExample {
         } else {
             return false;
         }
+    }
+    
+    // View functions only reads, but doesn't write state.
+    function viewFunction() public view returns (address) {
+        return address(this);
+    }
+
+    // Pure functions does not alter state whatsoever
+    function pureFunction() public pure returns (int) {
+        return 1 + 2;
+    }
+
+    function getterFunction() public view returns (uint256) {
+        return getterVar;
+    }
+
+    function setterFunction(uint256 newValue) public {
+        getterVar = newValue;
     }
 
     function forLoop() public pure returns (int) {
@@ -86,11 +106,11 @@ contract SolidityByExample {
 
     /*
         Standard GoodbyeWorld!
-        It's only appropriate to completely destroy the contract once we're done!
+        Dev note: It's only appropriate to completely destroy the contract once we're done!
     */
     function GoodByeWorld() public {
         emit GoodbyeEvent(msg.sender);
-        selfdestruct(payable(msg.sender));
+        selfdestruct(payable(0x0));
     }
 }
 

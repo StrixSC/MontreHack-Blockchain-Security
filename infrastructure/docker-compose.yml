@@ -34,8 +34,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./NukeAuction/contracts/:/home/ctf/contracts
-      - ./NukeAuction/NukeAuction.yml:/home/ctf/challenge.yml
+      - ./Transmitter/contracts/:/home/ctf/contracts
+      - ./Transmitter/Transmitter.yml:/home/ctf/challenge.yml
   NukeAuction:
     image: chainflag/eth-challenge-base
     container_name: nukeauction
@@ -66,13 +66,13 @@ services:
     volumes:
       - ./TimeRacers/contracts/:/home/ctf/contracts
       - ./TimeRacers/TimeRacers.yml:/home/ctf/challenge.yml
-  TransparentCasino:
+  SolidityTutor:
     image: chainflag/eth-challenge-base
-    container_name: transparentcasino
     ports:
       - "20004:20000"
+    container_name: soliditytutor
     env_file:
       - .env
     volumes:
-      - ./TransparentCasino/contracts/:/home/ctf/contracts
-      - ./TransparentCasino/TransparentCasino.yml:/home/ctf/challenge.yml
+      - ./SolidityTutor/contracts/:/home/ctf/contracts
+      - ./SolidityTutor/SolidityTutor.yml:/home/ctf/challenge.yml
