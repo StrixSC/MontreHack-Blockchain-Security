@@ -5,10 +5,10 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 confenv();
 
-const { PRIVATE_KEY, URL } = process.env;
+const { PRIVATE_KEY, ROPSTEN_URL, URL } = process.env;
 const setupAccounts = () => {
   if (!PRIVATE_KEY) {
-    console.error("Missing mnemonic from environment variable...");
+    console.error("Missing private key in env variable...");
     process.exit();
   }
 
@@ -29,6 +29,7 @@ const config: HardhatUserConfig = {
       { version: "0.8.7" },
       { version: "0.8.10" },
       { version: "0.8.13" },
+      { version: "0.8.15" },
       { version: "0.6.10" },
     ],
   },
@@ -37,10 +38,15 @@ const config: HardhatUserConfig = {
       chainId: 77777,
       accounts,
       url: URL || "http://localhost:7777"
+    },
+    ropsten : {
+      url: ROPSTEN_URL,
+      accounts,
+      chainId: 3
     }
   },
   mocha: {
-    timeout: 100000000
+    timeout: 1000000000
   },
 };
 
