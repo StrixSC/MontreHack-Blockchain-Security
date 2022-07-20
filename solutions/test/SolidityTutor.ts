@@ -9,7 +9,7 @@ describe("SolidityTutor", function () {
     let challenge: Contract;
 
     // Set the challenge instance to the address returned when deploying the challenge.
-    let challenge_instance_address = "0xA3e7b2383EBfEAf93A609F611ae8C7cA0e4c7db2";
+    let challenge_instance_address = "0x421762379C42212A28151250602EEb3A7496d5aA";
     before(async () => {
         [signer] = await ethers.getSigners();
         player = await signer.getAddress();
