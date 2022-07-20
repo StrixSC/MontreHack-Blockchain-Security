@@ -1,7 +1,9 @@
 contract: SolidityTutor # Challenge contract name(class name)
 
-description: We've just released our newest Tutor Contract. Due to high demands, a Solidity tutorial was created and can be access through the tutor. Make sure you restart at the beginning to be able to see the full tutorial.
-
+description: 
+  We've just released our newest Tutor Contract. Due to high demands, a Solidity tutorial was created and can be access through the tutor. Make sure you restart at the beginning to be able to see the full tutorial.
+  The isSolved() method must return true in order to obtain the flag.
+  
 flag: FLAG-NotSoImmutableAfterAll
 
 constructor:

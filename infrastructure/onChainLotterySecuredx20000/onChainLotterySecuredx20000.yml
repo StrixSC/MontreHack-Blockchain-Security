@@ -1,7 +1,9 @@
 contract: onChainLotterySecuredx20000 # Challenge contract name(class name)
 
-description: |
-
+description: 
+  Welcome to your very own on chain lottery! We have put in place a fullproof lottery system, we COMPLETELY eliminated the players' chance of guessing the answer. 
+  The isSolved() method must return true in order to obtain the flag.
+  
 flag: FLAG-BlockchainsAreDeterministic
 
 constructor:

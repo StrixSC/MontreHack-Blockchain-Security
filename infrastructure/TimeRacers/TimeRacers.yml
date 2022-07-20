@@ -1,9 +1,10 @@
 contract: TimeRacers  # Challenge contract name(class name)
 
 # The description will be displayed when players nc to the challenge
-description: |
+description: 
+  Gather around everyone. A new player is in town in the DApp World! Yes indeed TimeRacers are here to play! Start a game and guess your number in the respected time in order to win!!
+  The isSolved() function must return true in order to obtain your flag.
   
-
 flag: FLAG-TheDAOHackOf2016SalutesYou
 
 constructor:

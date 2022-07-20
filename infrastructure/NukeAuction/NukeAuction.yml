@@ -3,6 +3,7 @@ contract: NukeAuction # Challenge contract name(class name)
 # The description will be displayed when players nc to the challenge
 description:
   I never thought this would happen, but they're actually using the blockchain to sell a Nuke. I have to stop this, but how??
+  The isSolved() method must return true in order to obtain your flag.
   
 flag: FLAG-SelfDestructionIsNoJoke
 
