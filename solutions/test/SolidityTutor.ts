@@ -33,7 +33,7 @@ describe("SolidityTutor", function () {
         
         try {
             const resetTx = await challenge.resetToInitialTutorial(
-                { value: ethers.utils.parseEther("0.001"), gasLimit: 5000000 }
+                { value: ethers.utils.parseEther("0.02"), gasLimit: 5000000 }
                 );
                 const resetReceipt = await resetTx.wait();
                 console.log("Tutorial reset complete, now attacking storage slot clash vulnerability to change owner:");

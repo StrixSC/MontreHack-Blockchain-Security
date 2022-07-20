@@ -138,7 +138,7 @@ contract SolidityTutor {
     }
 
     function resetToInitialTutorial() public payable {
-        require(msg.value > 0, "Resetting the tutorial is not free...");
+        require(msg.value > 0.01 ether, "Resetting the tutorial is not free...");
         _deploy(defaultSalt, defaultBytecode);
     }
 
