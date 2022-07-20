@@ -2,7 +2,7 @@ contract: Transmitter  # Challenge contract name(class name)
 
 # The description will be displayed when players nc to the challenge
 description: 
-  The transmitter has been seeing a lot of action recently. It's been shown to be used a lot, especially during emergency, but we should really fix the issue with the noise that occurs sometimes during transmissions.
+  The transmitter has been seeing a lot of action recently. It's been shown to be used a lot by *sailors*, especially during emergencies, but we should really fix the issue with the *noise* that occurs sometimes during transmissions.
   Challenge deployed on Ropsten Testnet @ 0x7BB2B3F29faC32dd86b2B760ca180462b2E08e6E
   The flag is not obtained through this console, but instead can be retrieved through the deployed challenge.
 
