@@ -1,4 +1,4 @@
-# MontreHack July 2022 presentation on Blockchain Security
+# MontreHack July 2022 workshop on Blockchain Security
 
 Source: https://montrehack.ca/2022/07/20/introduction-blockchain-security.html
 
